@@ -1,10 +1,10 @@
-# 配置文件与数据目录
+# 🗂️ 配置文件与数据目录
 
 这份文档用于排错、备份和迁移时快速定位文件。路径会随系统、第三方安装器和用户自定义配置略有差异，实际以当前机器为准。
 
 本文菜单路径按“主菜单 [编号 菜单文案] -> [子编号 菜单文案]”格式书写。
 
-## 先看菜单入口
+## 🗂️ 先看菜单入口
 
 | 目标 | 菜单路径 |
 |---|---|
@@ -16,7 +16,7 @@
 | Caddy/证书体检 | `主菜单 [19 443 单入口管理中心] -> [12 CF DNS / Caddy 证书维护] -> [13 Caddy/证书一键体检]` |
 | 生成反馈诊断信息 | `主菜单 [15 服务健康总览]` |
 
-## VPS-Optimize 自身
+## 🚀 VPS-Optimize 自身
 
 | 路径 | 说明 |
 |---|---|
@@ -34,7 +34,7 @@ find /etc/vps-optimize/backups -maxdepth 2 -type d 2>/dev/null
 find /etc/vps-optimize/quarantine -maxdepth 2 -type d 2>/dev/null
 ```
 
-## 443 单入口
+## 🧩 443 单入口
 
 | 路径 | 说明 |
 |---|---|
@@ -79,7 +79,7 @@ ss -lntp | grep -E ':443|:8443|:1443|:40000|:2096'
 主菜单 [19 443 单入口管理中心] -> [12 CF DNS / Caddy 证书维护]
 ```
 
-## Caddy
+## 🌐 Caddy
 
 | 路径 | 说明 |
 |---|---|
@@ -113,7 +113,7 @@ find /etc/caddy -maxdepth 3 -type f
 主菜单 [19 443 单入口管理中心] -> [8 管理 Web 域名/反代]
 ```
 
-## Nginx
+## 🌐 Nginx
 
 | 路径 | 说明 |
 |---|---|
@@ -138,7 +138,7 @@ grep -R "listen" /etc/nginx 2>/dev/null
 
 443 单入口模式下，公网 `443` 只应由当前 `ENTRY_MODE` 对应的单个入口服务监听：`nginx-stream` 对应 `nginx`，`xray-fallback` 对应 Xray / 3x-ui / x-ui 托管的 Xray，`tcp-peek` 对应 `tcppeek` / `vpso-mux`。如果 `/etc/vps-optimize/sni-stack.env` 没有 `ENTRY_MODE`，脚本按 `nginx-stream` 兼容读取。
 
-## Cloudflare Token
+## 🔐 Cloudflare Token
 
 | 路径 | 说明 |
 |---|---|
@@ -165,7 +165,7 @@ ls -l /root/.config/vps-panel/cloudflare.env 2>/dev/null
 主菜单 [19 443 单入口管理中心] -> [12 CF DNS / Caddy 证书维护] -> [8 更新 Cloudflare API Token]
 ```
 
-## 3x-ui / x-ui
+## 🧩 3x-ui / x-ui
 
 常见官方安装器路径：
 
@@ -191,7 +191,7 @@ VPS-Optimize 入口：
 主菜单 [5 面板、节点与订阅工具] -> [3 面板 SSL 修复]
 ```
 
-## x-ui 增强套件
+## 🧩 x-ui 增强套件
 
 `xui-custom-manager.sh` 默认路径：
 
@@ -224,7 +224,7 @@ tail -n 100 /var/log/xui-custom-manager.log 2>/dev/null
 
 详细说明见 [xui-custom-manager.md](xui-custom-manager.md)。
 
-## Docker 和订阅工具
+## 🧰 Docker 和订阅工具
 
 常见路径：
 
@@ -257,7 +257,7 @@ find /opt -maxdepth 3 -name 'docker-compose.yml' -o -name 'compose.yml' 2>/dev/n
 主菜单 [11 Docker 安全管理]
 ```
 
-## Port Traffic Dog
+## 🔹 Port Traffic Dog
 
 `dog.sh` 默认路径：
 
@@ -295,7 +295,7 @@ nft list ruleset 2>/dev/null | grep -i port_traffic_monitor || true
 
 详细说明见 [dog.md](dog.md)。
 
-## SSH、防火墙、Fail2ban
+## 🛡️ SSH、防火墙、Fail2ban
 
 | 路径或服务 | 说明 |
 |---|---|
@@ -325,7 +325,7 @@ fail2ban-client status sshd 2>/dev/null || fail2ban-client status ssh 2>/dev/nul
 主菜单 [8 防火墙规则管理]
 ```
 
-## 日志速查
+## 🗂️ 日志速查
 
 | 目标 | 命令 |
 |---|---|
@@ -337,7 +337,7 @@ fail2ban-client status sshd 2>/dev/null || fail2ban-client status ssh 2>/dev/nul
 | xui-custom-manager timer | `journalctl -u xui-custom-reset.service -n 100 --no-pager` |
 | Port Traffic Dog | `tail -n 100 /etc/port-traffic-dog/logs/traffic.log` |
 
-## 敏感信息
+## 🛡️ 敏感信息
 
 不要公开分享：
 

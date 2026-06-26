@@ -1,4 +1,4 @@
-# 3x-ui + REALITY + 443 单入口部署
+# 🧩 3x-ui + REALITY + 443 单入口部署
 
 这篇教程讲的是：用 3x-ui 管理节点，让面板、订阅、网站和 REALITY 都通过公网 `443` 工作。核心思路是公网 `443` 只给当前入口模式对应的单个服务：`nginx-stream` 用 Nginx stream 按 SNI 分流，`tcp-peek` 用 `vpso-mux` 按 SNI 分流，`xray-fallback` 用 Xray 主入站接管 443 并 fallback 到本地 Web 反代引擎；本地后端全部尽量监听 `127.0.0.1`。
 
@@ -14,13 +14,13 @@ docs/443-single-entry.md
 docs/443-single-entry-troubleshooting.md
 ```
 
-## 示例说明
+## 📌 示例说明
 
 本文中的域名、路径和端口都是示例，不是必须照抄的固定值。`panel.example.com` 是示例面板域名，`node.example.com` 是示例节点域名，`site.example.com` 是示例网站域名，`40000` 是示例 3x-ui 面板端口，`2096` 是示例订阅端口，`8443` 是示例 Web 反代引擎本地端口，`1443` 是示例 Xray/REALITY 本地端口。
 
 实际部署时请替换成你自己的域名、路径和端口；如果脚本已经保存过配置，以脚本当前显示为准，不要盲目照抄教程里的示例。
 
-## 适合谁
+## 📌 适合谁
 
 | 情况 | 是否适合 |
 |---|---|
@@ -30,7 +30,7 @@ docs/443-single-entry-troubleshooting.md
 | 希望 Caddy、3x-ui、Xray 都各自监听公网 443 | 不适合，应该统一入口 |
 | 不清楚 DNS、Cloudflare、证书关系 | 建议先看完整教程再操作 |
 
-## 准备材料
+## 🧰 准备材料
 
 | 材料 | 示例 | 说明 |
 |---|---|---|
@@ -50,7 +50,7 @@ Cloudflare 建议：
 | 订阅域名 | DNS only / 灰云 |
 | REALITY 伪装 SNI | 外部真实 HTTPS 站点，不指向你的 VPS |
 
-## 预计耗时
+## ⏱️ 预计耗时
 
 | 阶段 | 预计耗时 |
 |---|---|
@@ -60,7 +60,7 @@ Cloudflare 建议：
 | 首次配置 443 单入口 | 10-20 分钟 |
 | 验证和备份 | 5-10 分钟 |
 
-## 会修改哪些东西
+## ⚙️ 会修改哪些东西
 
 | 项目 | 修改内容 | 风险 |
 |---|---|---|
@@ -71,7 +71,7 @@ Cloudflare 建议：
 | 防火墙 | 建议只保留 SSH 和公网 `443` | 误删端口会断连 |
 | 备份 | 创建 SNI stack 和手动配置备份 | 占用少量磁盘 |
 
-## 推荐架构
+## 🧭 推荐架构
 
 ```text
 公网 443 -> 当前入口模式对应的单个服务
@@ -99,9 +99,9 @@ site.example.com -> Caddy/Nginx 本地 Web 反代 -> 本地网站后端
 
 普通 TLS 和 REALITY 要分开判断：普通 TLS 更关注本机证书、Web fallback、Host/SNI 是否匹配；REALITY 更关注外部目标站点是否真实可访问、TLS 特征是否稳定，不要求 REALITY `serverName` 加入 Web 反代引擎，也不要求本机证书覆盖 REALITY `serverName`。证书策略仍然使用 `acme.sh + Cloudflare DNS API`，不使用 Caddy DNS 模块，也不需要 `xcaddy`。3x-ui 安装阶段选择的证书只用于完成安装流程，不是 443 单入口最终使用的证书方案。
 
-## 操作步骤
+## 🧭 操作步骤
 
-### 1. 做预检
+### ✅ 1. 做预检
 
 进入：
 
@@ -127,7 +127,7 @@ ss -lntp | grep ':443' || echo "443 未监听"
 
 如果已有 Caddy/Nginx/Apache 占用公网 `443`，先记录现有站点域名和后端端口，后续通过 `主菜单 [19 443 单入口管理中心] -> [8 管理 Web 域名/反代]` 重新补录。
 
-### 2. 安装或进入 3x-ui
+### 🚀 2. 安装或进入 3x-ui
 
 进入：
 
@@ -161,7 +161,7 @@ ss -lntp | grep ':443' || echo "443 未监听"
 | 普通订阅路径 | `/sub/` |
 | Clash/Mihomo 路径 | `/clash/` |
 
-### 3. 清空 3x-ui 面板证书路径
+### 🔐 3. 清空 3x-ui 面板证书路径
 
 只要你准备接入 VPS-Optimize 的 443 单入口，就应清空 3x-ui 面板和订阅证书路径，让 Web 反代引擎接管公网 HTTPS。
 
@@ -184,7 +184,7 @@ ss -lntp | grep ':443' || echo "443 未监听"
 
 原因：接入 443 单入口后，公网 HTTPS 由 Web 反代引擎处理，3x-ui 面板只做本地 HTTP 后端。如果不清空，可能导致 502 Bad Gateway、HTTP/HTTPS 后端协议不匹配、重定向循环、证书路径混乱、面板或订阅异常。
 
-### 4. 设置面板监听
+### ⚙️ 4. 设置面板监听
 
 一组示例值：
 
@@ -203,7 +203,7 @@ ss -lntp | grep ':443' || echo "443 未监听"
 curl -I http://127.0.0.1:40000/panel/
 ```
 
-### 5. 设置订阅服务
+### ⚙️ 5. 设置订阅服务
 
 在 3x-ui 订阅设置中示例：
 
@@ -233,7 +233,7 @@ curl -I http://127.0.0.1:2096/sub/
 
 如果 404，先确认 3x-ui 的订阅服务是否启用，以及路径是否一致。
 
-### 6. 新建 REALITY 入站
+### 🧩 6. 新建 REALITY 入站
 
 在 3x-ui 新增 VLESS REALITY 入站，示例：
 
@@ -266,7 +266,7 @@ openssl s_client -connect www.microsoft.com:443 -servername www.microsoft.com </
 
 能看到证书输出，说明外部 SNI 站点可用。
 
-### 7. 首次配置 443 单入口
+### 🧩 7. 首次配置 443 单入口
 
 进入：
 
@@ -304,7 +304,7 @@ openssl s_client -connect www.microsoft.com:443 -servername www.microsoft.com </
 - 面板域名 DNS 已解析到当前 VPS。
 - Cloudflare Token 权限正确。
 
-### 8. 运行链路体检
+### 🚀 8. 运行链路体检
 
 进入：
 
@@ -334,7 +334,7 @@ openssl s_client -connect 服务器IP:443 -servername panel.example.com </dev/nu
 | 订阅 | `127.0.0.1:2096` |
 | 浏览器访问 | `https://panel.example.com/panel/` |
 
-### 9. 检查客户端订阅、Hosts / External Proxy 和 REALITY
+### ✅ 9. 检查客户端订阅、Hosts / External Proxy 和 REALITY
 
 订阅链接里不应该出现：
 
@@ -377,7 +377,7 @@ REALITY 节点里重点确认：
 
 如果面板打开正常但 REALITY 连不上，优先看 `dest`、`serverNames`、本地监听端口，以及当前入口模式的 SNI 分流或 Xray fallback 接管是否符合预期。
 
-### 10. 成功后备份
+### 🛟 10. 成功后备份
 
 进入：
 
@@ -400,7 +400,7 @@ REALITY 节点里重点确认：
 | 订阅路径 | 运维笔记 |
 | Cloudflare Token 权限 | Cloudflare 控制台 |
 
-## 验证方法
+## ✅ 验证方法
 
 完整验证命令：
 
@@ -422,7 +422,7 @@ openssl s_client -connect 服务器IP:443 -servername panel.example.com </dev/nu
 主菜单 [15 服务健康总览]
 ```
 
-## 失败怎么回滚
+## 🛟 失败怎么回滚
 
 | 情况 | 处理 |
 |---|---|
@@ -434,7 +434,7 @@ openssl s_client -connect 服务器IP:443 -servername panel.example.com </dev/nu
 | REALITY 失败 | 检查 REALITY 本地监听、SNI、dest 和客户端节点端口 |
 | 配置整体混乱 | `主菜单 [16 配置备份与回滚] -> [3 从备份一键回滚]` 从手动备份回滚 |
 
-## 常见错误
+## ❓ 常见错误
 
 | 错误 | 现象 | 处理 |
 |---|---|---|

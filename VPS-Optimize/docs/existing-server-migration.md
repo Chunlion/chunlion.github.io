@@ -1,4 +1,4 @@
-# 已有服务器迁移到 443 单入口
+# 🔁 已有服务器迁移到 443 单入口
 
 这篇文档面向已经跑了服务的 VPS：已有 3x-ui、Caddy/Nginx 网站、订阅工具、Docker Compose 项目，想把公网 `443` 统一交给 VPS-Optimize 的 443 单入口。
 
@@ -6,7 +6,7 @@
 
 本文菜单路径按“主菜单 [编号 菜单文案] -> [子编号 菜单文案]”格式书写。
 
-## 适合谁
+## 📌 适合谁
 
 | 当前情况 | 是否适合 |
 |---|---|
@@ -16,7 +16,7 @@
 | 已有 Docker 订阅工具，想加 HTTPS 域名 | 适合 |
 | 不知道机器上跑了什么服务 | 先盘点，不要直接迁移 |
 
-## 迁移前准备
+## 🧰 迁移前准备
 
 | 准备项 | 说明 |
 |---|---|
@@ -28,7 +28,7 @@
 | Cloudflare Token | 用于 DNS 签发证书 |
 | 旧配置备份 | Caddy/Nginx/面板/Docker Compose 均要备份 |
 
-## 第一步：盘点现状
+## 🔹 第一步：盘点现状
 
 先运行：
 
@@ -60,7 +60,7 @@ ss -lntp | grep ':443'
 grep -R "listen .*443" /etc/nginx /etc/caddy 2>/dev/null
 ```
 
-## 第二步：创建备份
+## 🛟 第二步：创建备份
 
 先创建脚本全量备份：
 
@@ -93,7 +93,7 @@ docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Ports}}'
 find /opt -maxdepth 3 -name 'docker-compose.yml' -o -name 'compose.yml' 2>/dev/null
 ```
 
-## 第三步：选择迁移路线
+## 🛟 第三步：选择迁移路线
 
 | 当前状态 | 推荐路线 |
 |---|---|
@@ -108,7 +108,7 @@ find /opt -maxdepth 3 -name 'docker-compose.yml' -o -name 'compose.yml' 2>/dev/n
 
 订阅工具迁移见 [../tutorials/02-subscription-tools-caddy-nginx-reverse-proxy-443-single-entry.md](../tutorials/02-subscription-tools-caddy-nginx-reverse-proxy-443-single-entry.md)。
 
-## 未启用 443 单入口时的 HTTPS 反代过渡
+## 🌐 未启用 443 单入口时的 HTTPS 反代过渡
 
 如果你暂时不准备启用 443 单入口，只是想先给订阅工具或网站加 HTTPS 域名，可以走独立反代入口：
 
@@ -132,9 +132,9 @@ Nginx HTTPS 反代会复用现有 `acme.sh + Cloudflare DNS API` 证书流程，
 3. 同一个域名只交给 Caddy 或 Nginx 其中一个入口管理，不要重复配置。
 4. 后端仍建议监听 `127.0.0.1:端口`，例如 `127.0.0.1:3000`。域名和端口都是示例值，请替换为你的实际值。
 
-## 迁移已有 3x-ui
+## 🧩 迁移已有 3x-ui
 
-### 目标状态
+### ✅ 目标状态
 
 下面的 `40000`、`2096`、`1443` 是示例端口；实际以 3x-ui、Xray 和脚本保存的配置为准。
 
@@ -148,7 +148,7 @@ Nginx HTTPS 反代会复用现有 `acme.sh + Cloudflare DNS API` 证书流程，
 | REALITY 监听 | `127.0.0.1:1443` |
 | 客户端节点端口 | `443` |
 
-### 操作入口
+### 🗂️ 操作入口
 
 进入 3x-ui：
 
@@ -174,7 +174,7 @@ Nginx HTTPS 反代会复用现有 `acme.sh + Cloudflare DNS API` 证书流程，
 主菜单 [19 443 单入口管理中心] -> [13 443 链路体检]
 ```
 
-### 验证
+### ✅ 验证
 
 ```bash
 curl -I http://127.0.0.1:40000/panel/
@@ -192,9 +192,9 @@ curl -I https://panel.example.com/sub/
 127.0.0.1
 ```
 
-## 迁移已有 Caddy 网站
+## 🌐 迁移已有 Caddy 网站
 
-### 迁移前记录
+### 🛟 迁移前记录
 
 ```bash
 find /etc/caddy -maxdepth 3 -type f -print
@@ -209,7 +209,7 @@ grep -R "tls " /etc/caddy 2>/dev/null
 | `site.example.com` | HTTP | `127.0.0.1` | `8080` | 网站 |
 | `sub.example.com` | HTTP | `127.0.0.1` | `3000` | 订阅工具 |
 
-### 启用 443 后补录
+### 🧩 启用 443 后补录
 
 首次配置或重新应用 443 单入口可能会隔离旧 Caddy 配置和脚本管理的旧 Nginx HTTPS 反代配置，避免旧配置继续抢占公网 `443`。启用后不要再手写抢占 `443` 的旧规则，而是逐个补录：
 
@@ -233,7 +233,7 @@ curl -I https://site.example.com/
 openssl s_client -connect 服务器IP:443 -servername site.example.com </dev/null
 ```
 
-## 迁移已有 Nginx/Apache 网站
+## 🌐 迁移已有 Nginx/Apache 网站
 
 443 单入口模式下，公网 `443` 应由当前入口模式统一监听。旧 Nginx server、Apache、面板、Xray 都不应该再直接监听公网 `443`；如果希望继续用 Nginx 做网站反代，请在 `[19] -> [8]` 切换到 Nginx 本地 Web 反代引擎，而不是保留旧的公网 `443` server。
 
@@ -253,7 +253,7 @@ grep -R "listen" /etc/nginx /etc/apache2 /etc/httpd 2>/dev/null
 
 如果旧服务必须继续用 Nginx/Apache，至少不要让它抢 `0.0.0.0:443`。
 
-## 迁移 Docker 订阅工具
+## 🧰 迁移 Docker 订阅工具
 
 目标是容器后端只在本机或内网监听，公网只走 Caddy/Nginx 反代或 443 单入口。启用 443 单入口后，Caddy/Nginx 是可选的本地 Web 反代引擎，不再直接抢公网 `443`。
 
@@ -300,7 +300,7 @@ http://服务器IP:3000/
 https://sub.example.com:3000/
 ```
 
-## 迁移后的验证清单
+## 🗂️ 迁移后的验证清单
 
 | 检查项 | 命令或入口 | 期望 |
 |---|---|---|
@@ -320,7 +320,7 @@ https://sub.example.com:3000/
 主菜单 [16 配置备份与回滚] -> [1 创建全量配置备份]
 ```
 
-## 回滚方案
+## 🧭 回滚方案
 
 | 问题 | 优先处理 |
 |---|---|
@@ -344,7 +344,7 @@ https://sub.example.com:3000/
 
 失联或复杂故障见 [recovery-runbook.md](recovery-runbook.md)。
 
-## 常见迁移错误
+## 🛟 常见迁移错误
 
 | 错误 | 后果 | 正确做法 |
 |---|---|---|

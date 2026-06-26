@@ -10,6 +10,21 @@
   --chunlion-cyan: #36d6f8;
   --chunlion-text: rgba(248, 251, 255, 0.94);
   --chunlion-muted: rgba(213, 226, 245, 0.74);
+  --chunlion-nav-bg: rgba(255, 255, 255, 0.72);
+  --chunlion-nav-border: rgba(15, 23, 42, 0.12);
+  --chunlion-nav-text: rgba(15, 23, 42, 0.82);
+  --chunlion-nav-text-hover: rgba(8, 17, 34, 0.96);
+  --chunlion-nav-control: rgba(15, 23, 42, 0.06);
+  --chunlion-nav-control-border: rgba(15, 23, 42, 0.12);
+}
+
+.dark {
+  --chunlion-nav-bg: rgba(5, 13, 30, 0.68);
+  --chunlion-nav-border: rgba(148, 190, 255, 0.22);
+  --chunlion-nav-text: rgba(248, 251, 255, 0.88);
+  --chunlion-nav-text-hover: #ffffff;
+  --chunlion-nav-control: rgba(255, 255, 255, 0.08);
+  --chunlion-nav-control-border: rgba(148, 190, 255, 0.18);
 }
 
 body {
@@ -54,35 +69,71 @@ body::after {
   background: var(--vp-c-bg);
 }
 
-.VPNavBar {
-  border-bottom: 1px solid var(--chunlion-border);
-  background: rgba(5, 13, 30, 0.68) !important;
-  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.22);
+.VPNav,
+.VPNavBar,
+.VPNavBar:not(.home),
+.VPNavBar.home {
+  background: var(--chunlion-nav-bg) !important;
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
 }
 
+.VPNavBar {
+  border-bottom: 1px solid var(--chunlion-nav-border);
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.22);
+}
+
+.VPNavBar .container,
+.VPNavBar .content,
+.VPNavBar .content-body,
+.VPNavBarTitle,
+.VPNavBarMenu,
+.VPNavBarSearch {
+  background: transparent !important;
+}
+
 .VPNavBarTitle .title,
+.VPNavBarTitle .title span,
 .VPNavBarMenuLink,
 .VPNavBarMenuGroup .button,
+.VPNavBarMenuGroup .text,
 .VPNavBar .DocSearch-Button {
-  color: rgba(248, 251, 255, 0.88);
+  color: var(--chunlion-nav-text);
 }
 
 .VPNavBarMenuLink:hover,
 .VPNavBarMenuLink.active,
-.VPNavBarMenuGroup .button:hover {
-  color: #ffffff;
+.VPNavBarMenuGroup .button:hover,
+.VPNavBarMenuGroup .button:hover .text,
+.VPNavBarTitle .title:hover,
+.VPNavBarTitle .title:hover span {
+  color: var(--chunlion-nav-text-hover);
 }
 
 .VPNavBar .DocSearch-Button {
-  border: 1px solid rgba(148, 190, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--chunlion-nav-control-border);
+  background: var(--chunlion-nav-control);
   border-radius: 999px;
 }
 
+.VPNavBar .DocSearch-Button:hover {
+  border-color: color-mix(in srgb, var(--vp-c-brand-1) 42%, var(--chunlion-nav-control-border));
+}
+
+.VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder,
+.VPNavBar .DocSearch-Button .DocSearch-Search-Icon,
+.VPNavBar .VPSocialLink,
+.VPNavBar .VPSwitchAppearance {
+  color: var(--chunlion-nav-text);
+}
+
+.VPNavBar .VPSocialLink:hover,
+.VPNavBar .VPSwitchAppearance:hover {
+  color: var(--chunlion-nav-text-hover);
+}
+
 .VPNavScreen {
-  background: rgba(5, 13, 30, 0.96);
+  background: var(--chunlion-nav-bg);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
 }
@@ -90,12 +141,12 @@ body::after {
 .VPNavScreen a,
 .VPNavScreen button,
 .VPNavScreen .text {
-  color: rgba(248, 251, 255, 0.88);
+  color: var(--chunlion-nav-text);
 }
 
 .VPNavScreen a:hover,
 .VPNavScreen button:hover {
-  color: #ffffff;
+  color: var(--chunlion-nav-text-hover);
 }
 
 .VPContent.is-home {
@@ -114,11 +165,14 @@ body::after {
 }
 
 .VPHome .VPHero .container {
+  justify-content: center;
   max-width: 1180px;
+  text-align: center;
 }
 
 .VPHome .VPHero .main {
   max-width: 760px;
+  margin: 0 auto;
 }
 
 .VPHome .name {
@@ -135,10 +189,13 @@ body::after {
 
 .VPHome .tagline {
   max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
   color: var(--chunlion-muted);
 }
 
 .VPHome .actions {
+  justify-content: center;
   gap: 14px;
   padding-top: 10px;
 }
@@ -178,6 +235,10 @@ body::after {
 
 .VPHome .VPFeatures .container {
   max-width: 1180px;
+}
+
+.VPHome .VPFeatures .items {
+  justify-content: center;
 }
 
 .VPHome .VPFeature {

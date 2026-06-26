@@ -8,9 +8,16 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   head: [
-    ['meta', { name: 'theme-color', content: '#0f766e' }],
+    ['meta', { name: 'theme-color', content: '#1677ff' }],
     ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }]
   ],
+  markdown: {
+    lineNumbers: true,
+    theme: {
+      light: 'github-light',
+      dark: 'one-dark-pro'
+    }
+  },
   themeConfig: {
     siteTitle: 'VPS-Optimize',
     nav: [

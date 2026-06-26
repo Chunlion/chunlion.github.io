@@ -3,28 +3,21 @@ layout: home
 
 hero:
   name: VPS-Optimize
-  text: 文档站
-  tagline: VPS 初始化、安全加固、面板部署、443 单入口和故障恢复入口。
+  text: 全能服务器运维与网络防泄漏指南
+  tagline: 聚焦 443 单入口、反向代理、容器化部署和基于 Mihomo 内核的 DNS 防泄漏实践。
   actions:
     - theme: brand
-      text: 快速开始
+      text: 开始阅读
       link: /VPS-Optimize/quick-start
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Chunlion/VPS-Optimize
 
 features:
-  - title: 一条命令安装
-    details: 下载主脚本后直接运行，首次完成后注册 cy 快捷入口。
-  - title: 交互式面板
-    details: 常用运维入口集中在菜单里，减少反复查命令和路径。
-  - title: 运维预检
-    details: 检查系统、端口、DNS、时间、包管理器和关键服务状态。
-  - title: 安全加固
-    details: 管理 SSH、防火墙、Fail2ban、公钥登录和端口连接限制。
-  - title: 面板与订阅
-    details: 集成 3x-ui、S-UI、Sing-box、Xray、SublinkPro、Sub-Store、Dockge 和 Komari。
-  - title: 443 单入口
-    details: 让面板、订阅、网站和节点共用公网 443，并按入口模式分流。
-  - title: 备份回滚
-    details: 备份关键配置，支持查看、恢复、隔离归档和高风险操作回滚。
-  - title: 排错恢复
-    details: 提供端口排查、服务健康总览、443 体检、证书维护和失联急救入口。
+  - title: 443 高效端口复用与 VLESS 节点搭建
+    details: 梳理 Nginx Stream、TCP Peek、Xray Fallback 与 3x-ui REALITY/VLESS 节点的单入口部署方式。
+  - title: Caddy 轻量化环境与自动化 SSL
+    details: 使用 Caddy 或 Nginx 本地 Web 反代引擎承接 HTTPS，配合 Cloudflare DNS API 管理证书。
+  - title: Clash 规则集与 DNS 防泄漏策略
+    details: 面向 Mihomo/Clash 规则、订阅输出和 DNS 解析路径，减少代理环境下的域名泄漏风险。
 ---

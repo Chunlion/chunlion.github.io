@@ -2,22 +2,28 @@
 layout: home
 
 hero:
-  name: VPS-Optimize
-  text: 全能服务器运维与网络防泄漏指南
-  tagline: 聚焦 443 单入口、反向代理、容器化部署和基于 Mihomo 内核的 DNS 防泄漏实践。
+  name: Chunlion VPS Optimize
+  text: 一体化脚本工具
+  tagline: 面向 VPS 初始化、网络优化、节点部署与服务器维护的一体化脚本工具。
   actions:
     - theme: brand
-      text: 开始阅读
+      text: 快速开始
       link: /VPS-Optimize/quick-start
     - theme: alt
       text: GitHub
       link: https://github.com/Chunlion/VPS-Optimize
 
 features:
-  - title: 443 高效端口复用与 VLESS 节点搭建
-    details: 梳理 Nginx Stream、TCP Peek、Xray Fallback 与 3x-ui REALITY/VLESS 节点的单入口部署方式。
-  - title: Caddy 轻量化环境与自动化 SSL
-    details: 使用 Caddy 或 Nginx 本地 Web 反代引擎承接 HTTPS，配合 Cloudflare DNS API 管理证书。
-  - title: Clash 规则集与 DNS 防泄漏策略
-    details: 面向 Mihomo/Clash 规则、订阅输出和 DNS 解析路径，减少代理环境下的域名泄漏风险。
+  - title: VPS 初始化
+    details: 完成系统预检、基础工具安装、时区设置、安全准备和常用服务初始化。
+  - title: 网络与 TCP 优化
+    details: 集中管理 BBR、内核参数、端口连接限制、测速和网络链路诊断。
+  - title: 节点部署辅助
+    details: 辅助部署 3x-ui、REALITY、Xray、Sing-box、订阅工具和 443 单入口分流。
+  - title: 系统环境检测
+    details: 检查 DNS、端口占用、服务状态、防火墙、证书、Docker 和关键配置路径。
+  - title: 常见问题
+    details: 覆盖 SSH 失联、面板打不开、订阅异常、证书失败和 443 链路排错。
+  - title: 更新日志
+    details: 配合脚本内置更新入口和 GitHub Releases，追踪版本变化与维护记录。
 ---

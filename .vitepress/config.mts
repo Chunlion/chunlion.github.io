@@ -2,13 +2,13 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'VPS-Optimize 文档',
-  description: 'VPS-Optimize 使用文档',
+  title: 'Chunlion VPS Optimize',
+  description: '面向 VPS 初始化、网络优化、节点部署与服务器维护的一体化脚本工具',
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
   head: [
-    ['meta', { name: 'theme-color', content: '#1677ff' }],
+    ['meta', { name: 'theme-color', content: '#071326' }],
     ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }]
   ],
   markdown: {
@@ -19,7 +19,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    siteTitle: 'VPS-Optimize',
+    siteTitle: 'Chunlion VPS Optimize',
     nav: [
       { text: '首页', link: '/VPS-Optimize/' },
       { text: '快速开始', link: '/VPS-Optimize/quick-start' },

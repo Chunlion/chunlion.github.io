@@ -2,29 +2,28 @@
 layout: home
 
 hero:
-  name: VPS-Optimize
-  text: 文档入口
-  tagline: VPS 初始化、安全加固、面板部署、443 单入口、迁移和恢复文档。
+  name: Chunlion VPS Optimize
+  text: 一体化脚本工具
+  tagline: 面向 VPS 初始化、网络优化、节点部署与服务器维护的一体化脚本工具。
   actions:
     - theme: brand
       text: 快速开始
       link: /VPS-Optimize/quick-start
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Chunlion/VPS-Optimize
 
 features:
-  - title: 一条命令安装
-    details: 下载主脚本后直接运行，首次完成后注册 cy 快捷入口。
-  - title: 交互式面板
-    details: 常用运维入口集中在菜单里，减少反复查命令和路径。
-  - title: 运维预检
-    details: 检查系统、端口、DNS、时间、包管理器和关键服务状态。
-  - title: 安全加固
-    details: 管理 SSH、防火墙、Fail2ban、公钥登录和端口连接限制。
-  - title: 面板与订阅
-    details: 集成 3x-ui、S-UI、Sing-box、Xray、SublinkPro、Sub-Store、Dockge 和 Komari。
-  - title: 443 单入口
-    details: 让面板、订阅、网站和节点共用公网 443，并按入口模式分流。
-  - title: 备份回滚
-    details: 备份关键配置，支持查看、恢复、隔离归档和高风险操作回滚。
-  - title: 排错恢复
-    details: 提供端口排查、服务健康总览、443 体检、证书维护和失联急救入口。
+  - title: VPS 初始化
+    details: 完成系统预检、基础工具安装、时区设置、安全准备和常用服务初始化。
+  - title: 网络与 TCP 优化
+    details: 集中管理 BBR、内核参数、端口连接限制、测速和网络链路诊断。
+  - title: 节点部署辅助
+    details: 辅助部署 3x-ui、REALITY、Xray、Sing-box、订阅工具和 443 单入口分流。
+  - title: 系统环境检测
+    details: 检查 DNS、端口占用、服务状态、防火墙、证书、Docker 和关键配置路径。
+  - title: 常见问题
+    details: 覆盖 SSH 失联、面板打不开、订阅异常、证书失败和 443 链路排错。
+  - title: 更新日志
+    details: 配合脚本内置更新入口和 GitHub Releases，追踪版本变化与维护记录。
 ---

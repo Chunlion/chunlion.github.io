@@ -1,39 +1,58 @@
 :root {
-  --chunlion-bg-1: #050b18;
-  --chunlion-bg-2: #071326;
-  --chunlion-bg-3: #0b1f3a;
-  --chunlion-glass: rgba(12, 26, 50, 0.58);
-  --chunlion-glass-strong: rgba(15, 32, 61, 0.72);
-  --chunlion-border: rgba(148, 190, 255, 0.22);
-  --chunlion-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-  --chunlion-blue: #5aa7ff;
-  --chunlion-cyan: #36d6f8;
-  --chunlion-text: rgba(248, 251, 255, 0.94);
-  --chunlion-muted: rgba(213, 226, 245, 0.74);
-  --chunlion-nav-bg: rgba(255, 255, 255, 0.72);
-  --chunlion-nav-border: rgba(15, 23, 42, 0.12);
-  --chunlion-nav-text: rgba(15, 23, 42, 0.82);
-  --chunlion-nav-text-hover: rgba(8, 17, 34, 0.96);
-  --chunlion-nav-control: rgba(15, 23, 42, 0.06);
-  --chunlion-nav-control-border: rgba(15, 23, 42, 0.12);
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #60a5fa;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.12);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #1d4ed8, #0891b2);
+
+  --vp-home-bg: #f7fbff;
+  --vp-home-bg-soft: #eef6ff;
+  --vp-glass-bg: rgba(255, 255, 255, 0.72);
+  --vp-glass-bg-strong: rgba(255, 255, 255, 0.86);
+  --vp-glass-border: rgba(120, 170, 255, 0.22);
+  --vp-glass-shadow: 0 18px 50px rgba(30, 80, 160, 0.12);
+  --vp-nav-bg: rgba(255, 255, 255, 0.82);
+  --vp-nav-border: rgba(120, 150, 190, 0.18);
+  --vp-nav-text: rgba(31, 45, 66, 0.86);
+  --vp-nav-text-hover: #2563eb;
+  --vp-nav-control-bg: rgba(255, 255, 255, 0.62);
+  --vp-nav-control-border: rgba(120, 150, 190, 0.22);
 }
 
 .dark {
-  --chunlion-nav-bg: rgba(5, 13, 30, 0.68);
-  --chunlion-nav-border: rgba(148, 190, 255, 0.22);
-  --chunlion-nav-text: rgba(248, 251, 255, 0.88);
-  --chunlion-nav-text-hover: #ffffff;
-  --chunlion-nav-control: rgba(255, 255, 255, 0.08);
-  --chunlion-nav-control-border: rgba(148, 190, 255, 0.18);
+  --vp-home-bg: #0b1220;
+  --vp-home-bg-soft: #111827;
+  --vp-glass-bg: rgba(17, 24, 39, 0.72);
+  --vp-glass-bg-strong: rgba(17, 24, 39, 0.86);
+  --vp-glass-border: rgba(147, 197, 253, 0.22);
+  --vp-glass-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  --vp-nav-bg: rgba(15, 23, 42, 0.82);
+  --vp-nav-border: rgba(147, 197, 253, 0.18);
+  --vp-nav-text: rgba(241, 245, 249, 0.88);
+  --vp-nav-text-hover: #93c5fd;
+  --vp-nav-control-bg: rgba(255, 255, 255, 0.08);
+  --vp-nav-control-border: rgba(147, 197, 253, 0.18);
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {
   min-width: 320px;
-  overflow-x: hidden;
   background:
-    radial-gradient(circle at 18% 18%, rgba(43, 127, 255, 0.2), transparent 32%),
-    radial-gradient(circle at 82% 10%, rgba(54, 214, 248, 0.16), transparent 30%),
-    linear-gradient(135deg, var(--chunlion-bg-1) 0%, var(--chunlion-bg-2) 46%, var(--chunlion-bg-3) 100%);
+    radial-gradient(circle at 16% 14%, rgba(96, 165, 250, 0.22), transparent 30%),
+    radial-gradient(circle at 82% 12%, rgba(45, 212, 191, 0.16), transparent 28%),
+    linear-gradient(135deg, #ffffff 0%, var(--vp-home-bg) 48%, var(--vp-home-bg-soft) 100%);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at 16% 14%, rgba(96, 165, 250, 0.16), transparent 30%),
+    radial-gradient(circle at 82% 12%, rgba(45, 212, 191, 0.1), transparent 28%),
+    linear-gradient(135deg, #020617 0%, var(--vp-home-bg) 52%, var(--vp-home-bg-soft) 100%);
 }
 
 body::before,
@@ -42,22 +61,22 @@ body::after {
   z-index: 0;
   pointer-events: none;
   content: "";
-  filter: blur(16px);
+  filter: blur(18px);
 }
 
 body::before {
   inset: -18% auto auto -12%;
-  width: 58vw;
-  height: 58vw;
-  background: radial-gradient(circle, rgba(43, 127, 255, 0.22), rgba(43, 127, 255, 0) 68%);
+  width: 54vw;
+  height: 54vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0) 68%);
 }
 
 body::after {
-  right: -18%;
-  bottom: -24%;
-  width: 64vw;
-  height: 64vw;
-  background: radial-gradient(circle, rgba(54, 214, 248, 0.18), rgba(54, 214, 248, 0) 70%);
+  right: -20%;
+  bottom: -26%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.15), rgba(45, 212, 191, 0) 70%);
 }
 
 #app {
@@ -71,16 +90,16 @@ body::after {
 
 .VPNav,
 .VPNavBar,
-.VPNavBar:not(.home),
-.VPNavBar.home {
-  background: var(--chunlion-nav-bg) !important;
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
+.VPNavBar.home,
+.VPNavBar:not(.home) {
+  background: var(--vp-nav-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .VPNavBar {
-  border-bottom: 1px solid var(--chunlion-nav-border);
-  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.22);
+  border-bottom: 1px solid var(--vp-nav-border);
+  box-shadow: 0 8px 30px rgba(40, 80, 140, 0.08);
 }
 
 .VPNavBar .container,
@@ -93,12 +112,18 @@ body::after {
 }
 
 .VPNavBarTitle .title,
-.VPNavBarTitle .title span,
+.VPNavBarTitle .title span {
+  color: var(--vp-nav-text);
+  font-weight: 700;
+}
+
 .VPNavBarMenuLink,
 .VPNavBarMenuGroup .button,
 .VPNavBarMenuGroup .text,
-.VPNavBar .DocSearch-Button {
-  color: var(--chunlion-nav-text);
+.VPNavBar .DocSearch-Button,
+.VPNavBar .VPSocialLink,
+.VPNavBar .VPSwitchAppearance {
+  color: var(--vp-nav-text);
 }
 
 .VPNavBarMenuLink:hover,
@@ -106,54 +131,43 @@ body::after {
 .VPNavBarMenuGroup .button:hover,
 .VPNavBarMenuGroup .button:hover .text,
 .VPNavBarTitle .title:hover,
-.VPNavBarTitle .title:hover span {
-  color: var(--chunlion-nav-text-hover);
+.VPNavBarTitle .title:hover span,
+.VPNavBar .VPSocialLink:hover,
+.VPNavBar .VPSwitchAppearance:hover {
+  color: var(--vp-nav-text-hover);
 }
 
 .VPNavBar .DocSearch-Button {
-  border: 1px solid var(--chunlion-nav-control-border);
-  background: var(--chunlion-nav-control);
+  min-width: 168px;
+  border: 1px solid var(--vp-nav-control-border);
   border-radius: 999px;
+  background: var(--vp-nav-control-bg);
 }
 
 .VPNavBar .DocSearch-Button:hover {
-  border-color: color-mix(in srgb, var(--vp-c-brand-1) 42%, var(--chunlion-nav-control-border));
+  border-color: rgba(59, 130, 246, 0.42);
 }
 
 .VPNavBar .DocSearch-Button .DocSearch-Button-Placeholder,
-.VPNavBar .DocSearch-Button .DocSearch-Search-Icon,
-.VPNavBar .VPSocialLink,
-.VPNavBar .VPSwitchAppearance {
-  color: var(--chunlion-nav-text);
-}
-
-.VPNavBar .VPSocialLink:hover,
-.VPNavBar .VPSwitchAppearance:hover {
-  color: var(--chunlion-nav-text-hover);
+.VPNavBar .DocSearch-Button .DocSearch-Search-Icon {
+  color: var(--vp-nav-text);
 }
 
 .VPNavScreen {
-  background: var(--chunlion-nav-bg);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-}
-
-.VPNavScreen a,
-.VPNavScreen button,
-.VPNavScreen .text {
-  color: var(--chunlion-nav-text);
-}
-
-.VPNavScreen a:hover,
-.VPNavScreen button:hover {
-  color: var(--chunlion-nav-text-hover);
+  background: var(--vp-c-bg);
 }
 
 .VPContent.is-home {
   min-height: 100vh;
   background:
-    linear-gradient(180deg, rgba(5, 11, 24, 0.05), rgba(5, 11, 24, 0.42)),
-    radial-gradient(circle at 50% 8%, rgba(90, 167, 255, 0.12), transparent 34%);
+    radial-gradient(circle at 50% 8%, rgba(96, 165, 250, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(239, 246, 255, 0.3));
+}
+
+.dark .VPContent.is-home {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(96, 165, 250, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.34));
 }
 
 .VPHome {
@@ -161,7 +175,7 @@ body::after {
 }
 
 .VPHome .VPHero {
-  padding-top: 96px;
+  padding-top: 92px;
 }
 
 .VPHome .VPHero .container {
@@ -175,15 +189,8 @@ body::after {
   margin: 0 auto;
 }
 
-.VPHome .name {
-  letter-spacing: 0;
-  background: linear-gradient(120deg, #ffffff 0%, #8bc5ff 44%, #36d6f8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
+.VPHome .name,
 .VPHome .text {
-  color: var(--chunlion-text);
   letter-spacing: 0;
 }
 
@@ -191,7 +198,6 @@ body::after {
   max-width: 720px;
   margin-right: auto;
   margin-left: auto;
-  color: var(--chunlion-muted);
 }
 
 .VPHome .actions {
@@ -202,7 +208,7 @@ body::after {
 
 .VPHome .VPButton {
   border-radius: 999px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 14px 34px rgba(30, 80, 160, 0.14);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
@@ -211,26 +217,26 @@ body::after {
 }
 
 .VPHome .VPButton.brand {
-  border: 1px solid rgba(117, 190, 255, 0.58);
-  background: linear-gradient(135deg, #1976ff, #38c9ff);
+  border: 1px solid rgba(37, 99, 235, 0.38);
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
   color: #ffffff;
 }
 
 .VPHome .VPButton.brand:hover {
-  box-shadow: 0 18px 42px rgba(35, 146, 255, 0.34);
+  box-shadow: 0 18px 42px rgba(37, 99, 235, 0.24);
 }
 
 .VPHome .VPButton.alt {
-  border: 1px solid rgba(184, 213, 255, 0.24);
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(248, 251, 255, 0.92);
+  border: 1px solid var(--vp-glass-border);
+  background: rgba(255, 255, 255, 0.68);
+  color: #1f2937;
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
 }
 
-.VPHome .VPButton.alt:hover {
-  border-color: rgba(184, 213, 255, 0.42);
-  background: rgba(255, 255, 255, 0.15);
+.dark .VPHome .VPButton.alt {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(241, 245, 249, 0.92);
 }
 
 .VPHome .VPFeatures .container {
@@ -242,30 +248,38 @@ body::after {
 }
 
 .VPHome .VPFeature {
-  min-height: 168px;
-  border: 1px solid var(--chunlion-border);
+  min-height: 164px;
+  border: 1px solid var(--vp-glass-border);
   border-radius: 22px;
-  background: var(--chunlion-glass);
-  box-shadow: var(--chunlion-shadow);
+  background: var(--vp-glass-bg);
+  box-shadow: var(--vp-glass-shadow);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .VPHome .VPFeature:hover {
-  border-color: rgba(115, 184, 255, 0.48);
-  background: var(--chunlion-glass-strong);
-  box-shadow: 0 28px 80px rgba(26, 108, 255, 0.2);
+  border-color: rgba(59, 130, 246, 0.38);
+  background: var(--vp-glass-bg-strong);
+  box-shadow: 0 24px 64px rgba(30, 80, 160, 0.16);
   transform: translateY(-4px);
 }
 
 .VPHome .VPFeature .title {
-  color: var(--chunlion-text);
   letter-spacing: 0;
 }
 
-.VPHome .VPFeature .details {
-  color: var(--chunlion-muted);
+.VPSidebar {
+  width: min(280px, calc(100vw - 48px));
+}
+
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+}
+
+.vp-doc div[class*="language-"] {
+  border: 1px solid var(--vp-c-divider);
 }
 
 @media (max-width: 768px) {
@@ -283,10 +297,7 @@ body::after {
     padding-top: 72px;
   }
 
-  .VPHome .VPHero .main {
-    max-width: 100%;
-  }
-
+  .VPHome .VPHero .main,
   .VPHome .tagline {
     max-width: 100%;
   }
@@ -294,5 +305,9 @@ body::after {
   .VPHome .VPFeature {
     min-height: 142px;
     border-radius: 18px;
+  }
+
+  .VPNavBar .DocSearch-Button {
+    min-width: 0;
   }
 }

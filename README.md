@@ -1,4 +1,4 @@
-# Chunlion VPS Optimize 文档站
+# VPS-Optimize 文档站
 
 入口：https://chunlion.github.io/VPS-Optimize/
 

@@ -2,8 +2,7 @@
 layout: home
 
 hero:
-  name: Chunlion VPS Optimize
-  text: 一体化脚本工具
+  name: VPS-Optimize
   tagline: 面向 VPS 初始化、系统优化、网络参数调整与服务器维护的脚本工具。
   actions:
     - theme: brand
@@ -22,8 +21,8 @@ features:
     details: 调整常见内核网络参数，改善服务器网络表现。
   - title: TCP 优化
     details: 辅助配置拥塞控制算法与队列管理策略。
-  - title: 基础安全配置
-    details: 提供 SSH、防火墙与系统安全相关的基础配置建议。
-  - title: 维护辅助
-    details: 提供更新、清理、状态查看等常见维护入口。
+  - title: 443 单入口
+    details: 统一公网 443 入口，辅助处理面板、订阅、网站和节点分流。
+  - title: 维护与回滚
+    details: 提供更新、清理、状态查看、备份恢复和故障排查入口。
 ---

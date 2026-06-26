@@ -2,13 +2,13 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: 'Chunlion VPS Optimize',
-  description: '面向 VPS 初始化、网络优化、节点部署与服务器维护的一体化脚本工具',
+  title: 'VPS-Optimize',
+  description: '面向 VPS 初始化、系统优化、网络参数调整与服务器维护的脚本工具',
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
   head: [
-    ['meta', { name: 'theme-color', content: '#071326' }],
+    ['meta', { name: 'theme-color', content: '#f7fbff' }],
     ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }]
   ],
   markdown: {
@@ -19,17 +19,19 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    siteTitle: 'Chunlion VPS Optimize',
+    siteTitle: 'VPS-Optimize',
     nav: [
       { text: '首页', link: '/VPS-Optimize/' },
       { text: '快速开始', link: '/VPS-Optimize/quick-start' },
       {
-        text: '主路径',
+        text: '文档',
         items: [
+          { text: '文档首页', link: '/VPS-Optimize/' },
+          { text: '443 单入口', link: '/VPS-Optimize/docs/443-single-entry' },
           { text: '3x-ui + REALITY + 443', link: '/VPS-Optimize/tutorials/01-3x-ui-reality-443' },
-          { text: '已有服务器迁移', link: '/VPS-Optimize/docs/existing-server-migration' },
-          { text: '443 排错/恢复', link: '/VPS-Optimize/docs/443-single-entry-troubleshooting' },
-          { text: '失联与回滚急救', link: '/VPS-Optimize/docs/recovery-runbook' }
+          { text: '订阅工具接入 443', link: '/VPS-Optimize/tutorials/02-subscription-tools-caddy-nginx-reverse-proxy-443-single-entry' },
+          { text: '安全与回滚', link: '/VPS-Optimize/docs/security-rollback' },
+          { text: '常见问题', link: '/VPS-Optimize/docs/faq' }
         ]
       },
       { text: 'GitHub', link: 'https://github.com/Chunlion/VPS-Optimize' }
@@ -37,36 +39,46 @@ export default defineConfig({
     sidebar: {
       '/VPS-Optimize/': [
         {
-          text: '主路径',
+          text: '使用指南',
           items: [
             { text: '文档首页', link: '/VPS-Optimize/' },
             { text: '快速开始', link: '/VPS-Optimize/quick-start' },
-            { text: '3x-ui + REALITY + 443', link: '/VPS-Optimize/tutorials/01-3x-ui-reality-443' },
-            { text: '已有服务器迁移', link: '/VPS-Optimize/docs/existing-server-migration' },
-            { text: '443 排错/恢复', link: '/VPS-Optimize/docs/443-single-entry-troubleshooting' },
-            { text: '失联与回滚急救', link: '/VPS-Optimize/docs/recovery-runbook' }
+            { text: '使用前必读', link: '/VPS-Optimize/docs/before-use' },
+            { text: '支持系统', link: '/VPS-Optimize/docs/supported-systems' }
           ]
         },
         {
-          text: '443 单入口',
+          text: '核心功能',
           items: [
-            { text: '443 单入口教程', link: '/VPS-Optimize/docs/443-single-entry' },
-            { text: 'TCP Peek 引擎', link: '/VPS-Optimize/docs/443-tcp-peek-engine' }
+            { text: '443 单入口', link: '/VPS-Optimize/docs/443-single-entry' },
+            { text: 'TCP Peek 引擎', link: '/VPS-Optimize/docs/443-tcp-peek-engine' },
+            { text: '订阅管理与节点工具', link: '/VPS-Optimize/docs/subscription-tools' }
           ]
         },
         {
           text: '场景教程',
           items: [
             { text: '3x-ui + REALITY + 443', link: '/VPS-Optimize/tutorials/01-3x-ui-reality-443' },
-            { text: '订阅工具接入 443', link: '/VPS-Optimize/tutorials/02-subscription-tools-caddy-nginx-reverse-proxy-443-single-entry' }
+            { text: '订阅工具接入 443', link: '/VPS-Optimize/tutorials/02-subscription-tools-caddy-nginx-reverse-proxy-443-single-entry' },
+            { text: '已有服务器迁移', link: '/VPS-Optimize/docs/existing-server-migration' },
+            { text: '失联与回滚急救', link: '/VPS-Optimize/docs/recovery-runbook' }
           ]
         },
         {
-          text: '参考与工具',
+          text: '工具',
           items: [
             { text: '配置路径', link: '/VPS-Optimize/docs/config-paths' },
-            { text: 'dog.sh', link: '/VPS-Optimize/docs/dog' },
+            { text: '端口流量狗', link: '/VPS-Optimize/docs/dog' },
             { text: 'x-ui 增强套件', link: '/VPS-Optimize/docs/xui-custom-manager' }
+          ]
+        },
+        {
+          text: '维护与排错',
+          items: [
+            { text: '443 排错/恢复', link: '/VPS-Optimize/docs/443-single-entry-troubleshooting' },
+            { text: '安全与回滚', link: '/VPS-Optimize/docs/security-rollback' },
+            { text: '更新与卸载', link: '/VPS-Optimize/docs/update-uninstall' },
+            { text: '常见问题', link: '/VPS-Optimize/docs/faq' }
           ]
         }
       ]

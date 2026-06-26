@@ -193,7 +193,8 @@ body::after {
 
 .VPHome .VPHero .container {
   display: block;
-  max-width: min(1504px, calc(100vw - 64px));
+  width: min(1280px, calc(100vw - 96px));
+  max-width: none;
   padding: 54px 62px 46px;
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 40px;
@@ -291,7 +292,8 @@ body::after {
 }
 
 .VPHome .VPFeatures .container {
-  max-width: min(1504px, calc(100vw - 64px));
+  width: min(1280px, calc(100vw - 96px));
+  max-width: none;
 }
 
 .VPHome .VPFeatures {
@@ -373,7 +375,8 @@ body::after {
   }
 
   .VPHome .VPHero .container {
-    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+    max-width: none;
     padding: 36px 26px 34px;
     border-radius: 28px;
   }
@@ -393,7 +396,8 @@ body::after {
   }
 
   .VPHome .VPFeatures .container {
-    max-width: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+    max-width: none;
   }
 
   .VPHome .VPFeature {
